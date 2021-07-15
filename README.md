@@ -23,3 +23,11 @@
 2021-07-15 19:00:41.822 12641-16010/com.example.sampleapp W/System.err:   Pinned certificates for triplee.tech:
 2021-07-15 19:00:41.822 12641-16010/com.example.sampleapp W/System.err:     sha256/AAAA
 ```
+
+Without the user-certificates enabling xml, we see the following error on Android 11. According to Android developer docs, Android 6.0 and under trusts user-certificates by default. Android 7.0 and over only trusts the system certificates by default (it will ignore user installed certs). Source: [Android Docs](https://developer.android.com/training/articles/security-config#base-config)
+
+```log
+2021-07-15 19:13:05.321 19003-19879/tech.triplee.certificatepinningexample W/System.err: javax.net.ssl.SSLHandshakeException: java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.
+2021-07-15 19:13:05.321 19003-19879/tech.triplee.certificatepinningexample W/System.err:     at com.android.org.conscrypt.SSLUtils.toSSLHandshakeException(SSLUtils.java:362)
+2021-07-15 19:13:05.321 19003-19879/tech.triplee.certificatepinningexample W/System.err:     at com.android.org.conscrypt.ConscryptEngine.convertException(ConscryptEngine.java:1134)
+```
