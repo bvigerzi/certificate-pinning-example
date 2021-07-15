@@ -8,7 +8,7 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val certificatePinner = CertificatePinner.Builder().add("triplee.tech", "sha256/AAAA").build()
+        val certificatePinner = CertificatePinner.Builder().add("triplee.tech", "sha256//ixgr6MMNrnKpNw7Z/QDrCB97il+b0DJnI7iUZ5L9Ms=").build()
         val client = OkHttpClient.Builder().certificatePinner(certificatePinner).build()
         client.newCall(Request.Builder().url("https://triplee.tech").build()).enqueue(object :
             Callback {
